@@ -6,8 +6,7 @@ module "eks" {
 
   tags = {
     Environment = "epam-learning"
-    GithubRepo  = "terraform-aws-eks"
-    GithubOrg   = "terraform-aws-modules"
+    GithubRepo  = "https://github.com/moskvenkov/diploma-moskvenkov-epam"
   }
 
   vpc_id = module.vpc.vpc_id
@@ -19,17 +18,17 @@ module "eks" {
   worker_groups = [
     {
       name                          = "worker-group-1"
-      instance_type                 = "t2.small"
-      additional_userdata           = "echo foo bar"
-      asg_desired_capacity          = 2
+      instance_type                 = "t2.micro"
+      additional_userdata           = "instance type selected for testing on personal AWS account"
+      asg_desired_capacity          = 4
       additional_security_group_ids = [aws_security_group.worker_group_mgmt_one.id]
     },
     {
       name                          = "worker-group-2"
-      instance_type                 = "t2.medium"
-      additional_userdata           = "echo foo bar"
+      instance_type                 = "t2.micro"
+      additional_userdata           = "nstance type selected for testing on personal AWS account"
       additional_security_group_ids = [aws_security_group.worker_group_mgmt_two.id]
-      asg_desired_capacity          = 1
+      asg_desired_capacity          = 2
     },
   ]
 }
