@@ -1,2 +1,3 @@
 creds/*
 infrastructure/.terraform/*
+terraform*
